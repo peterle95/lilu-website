@@ -63,16 +63,24 @@ footer {
     padding: 10px 40px 10px 40px;
 }
 
+#icons {
+    display: flex;
+    align-items: center;
+}
+
+
 #insta_logo {
     width: 25px;
     height: 25px;
-    padding-top: 12px;
-    padding-right: 12px;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #telegram_logo {
     width: 25px;
     height: 25px;
+    padding-top: 4px;
 }
 
 #card-display {
@@ -96,3 +104,8 @@ form {
     display: flex;
     justify-content: center;
 }
+
+#donations {
+    margin-top: 70px;
+}
+
