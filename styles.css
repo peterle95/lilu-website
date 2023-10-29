@@ -9,13 +9,11 @@ h1 {
     font-size: 3rem;
 }
 
-h2 {
+h2, h3 {
     font-family: 'Times New Roman', Times, serif;
 }
 
-h3 {
-    font-family: cursive;
-}
+
 
 
 body {
@@ -119,6 +117,6 @@ form {
 }
 
 #donations {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
