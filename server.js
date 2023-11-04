@@ -12,7 +12,7 @@ const app = express();
 
 // Set up middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'your-secret-key', resave: false, saveUninitialized: false }));
+app.use(session({ secret: 'lilu_website_server.2024!', resave: false, saveUninitialized: false })); // sercret: <YourPassword>
 app.use(passport.initialize());
 app.use(passport.session());
 
