@@ -1,144 +1,240 @@
-/* Reset some default styles */
-body, h1, ul {
+:root {
+    --primary-color: #300b3f;
+    --secondary-color: #6a0dad;
+    --text-color: #ffffff;
+    --accent-color: #ffcc00;
+    --background-color: #1a1a1a;
+}
+
+body, html {
     margin: 0;
     padding: 0;
-}
-
-h1 {
-    font-family: cursive;
-    font-size: 3rem;
-}
-
-h2, h3 {
-    font-family: 'Times New Roman', Times, serif;
-}
-
-
-
-
-body {
-    font-family: 'Arial';
-    background-color: #300b3f;
-    color: #fff;
-    min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
-    display: flex;
-    flex-direction: column;
-}
-
-#lorem-ipsum
-{
-    margin: 50px 110px 50px 40px;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 header {
-    display: flex;
-    background-color: #222;
-    padding: 20px;
-    justify-content: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(48, 11, 63, 0.8);
+    backdrop-filter: blur(5px);
 }
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
 
 nav ul {
+    display: flex;
     list-style-type: none;
-    background-color: #333;
-    text-align: left;
-    padding: 10px;
-    padding-left: 40px;
-}
-
-nav li {
-    display: inline;
-    margin-right: 20px;
+    gap: 2rem;
 }
 
 nav a {
+    color: var(--text-color);
     text-decoration: none;
-    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    text-decoration: none;
     font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #f6a000;
+    transform: translateY(-2px);
+}
+
+.hero {
+    height: 100vh;
+    background-image: linear-gradient(rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.6)), url('tarot-background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 1rem;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header-cta {
+        margin-top: 1rem;
+    }
+
+    .cta-button {
+        margin-left: 0;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
 }
 
 main {
-    flex-grow: 1;
-    padding: 20px;
+    padding-top: var(--header-height);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
-#contact-info {
-    margin-top: 30px;
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    color: var(--accent-color);
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    background-color: #222;
-    text-align: center;
-    padding: 10px 40px 10px 40px;
-}
-
-#icons {
-    display: flex;
-    align-items: center;
-}
-
-
-#insta_logo {
-    width: 25px;
-    height: 25px;
-    padding-top: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#telegram_logo {
-    width: 25px;
-    height: 25px;
-    padding-top: 4px;
+p {
+    margin-bottom: 1rem;
 }
 
 #card-display {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
 }
 
 .card {
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    perspective: 1000px;
     cursor: pointer;
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card.flipped img {
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: scale(1.05);
+}
+
+.card.flipped .card-inner {
     transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-front {
+    background-color: var(--secondary-color);
+}
+
+.card-back {
+    background-color: var(--primary-color);
+    transform: rotateY(180deg);
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 .card img {
     width: 100%;
     height: 100%;
-    transition: transform 0.3s, box-shadow 0.3s, transform 0.3s;
+    object-fit: cover;
 }
 
-.card:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+footer {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    text-align: center;
+    margin-top: auto;
 }
 
-
-
-/* Add this CSS to make navigation items glow on hover */
-nav a:hover {
-    color: #ffcc00; /* Change this color to your desired glow color */
-    transition: color 0.3s ease; /* Add a smooth transition effect */
-}
-
-form {
+#icons {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-#donations {
-    margin-top: 50px;
+#icons img {
+    width: 25px;
+    height: 25px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #card-display {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 }
 

@@ -2,19 +2,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const cards = document.querySelectorAll('.card');
 
     cards.forEach((card) => {
+        const cardInner = document.createElement('div');
+        cardInner.className = 'card-inner';
+
+        const cardFront = document.createElement('div');
+        cardFront.className = 'card-front';
+        cardFront.innerHTML = `<img src="${card.querySelector('img').src}" alt="Tarot Card Image">`;
+
+        const cardBack = document.createElement('div');
+        cardBack.className = 'card-back';
+        cardBack.textContent = card.getAttribute('data-text');
+
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        card.innerHTML = ''; // Clear the original content
+        card.appendChild(cardInner);
+
         card.addEventListener('click', function () {
-            const text = this.getAttribute('data-text');
-
-            if (this.classList.contains('flipped')) {
-                this.innerHTML = `<img src="${this.getAttribute('data-image')}" alt="Tarot Card Image">`;
-                this.classList.remove('flipped');
-            } else {
-                this.innerHTML = text;
-                this.classList.add('flipped');
-            }
+            this.classList.toggle('flipped');
         });
-
-        // Store the card image source in a data attribute
-        card.setAttribute('data-image', card.querySelector('img').src);
     });
 });
