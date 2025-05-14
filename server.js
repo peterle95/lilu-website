@@ -15,8 +15,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'lilu_website_server.2024!', resave: false, saveUninitialized: false })); // sercret: <YourPassword>
 app.use(passport.initialize());
 app.use(passport.session());
+// Serve static files
+app.use(express.static(__dirname));
 
-// Your routes and authentication setup will go here
+// Add route for the home page
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});// Your routes and authentication setup will go here
 
 // Start the server
 const PORT = process.env.PORT || 3000;
