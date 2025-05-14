@@ -1,7 +1,5 @@
 # Tarot Cards by Lilu
 
-[![Tarot Cards by Lilu](https://via.placeholder.com/1200x300/300b3f/ffffff?text=Tarot+Cards+by+Lilu)](https://via.placeholder.com/1200x300/300b3f/ffffff?text=Tarot+Cards+by+Lilu)
-
 ## Project Overview
 
 This project is a containerized web application for "Tarot Cards by Lilu," a tarot card reading service. The website provides information about tarot card readings, an about page highlighting Lilu's expertise, and contact details for inquiries. This project serves as a demonstration of Docker containerization skills through the implementation of a multi-container setup utilizing Node.js and Nginx.
@@ -41,7 +39,7 @@ This project leverages Docker to containerize the application, creating an isola
 2. **Build and start the containers:**
 
 ```bash
-	docker-compose up --build
+   docker-compose up --build
 ```
 
 3. **Access the application:**
@@ -53,7 +51,7 @@ This project leverages Docker to containerize the application, creating an isola
 4. **Stop the containers:**
 
 ```bash
-docker-compose down
+   docker-compose down
 ```
 
 ## Docker Commands Reference
